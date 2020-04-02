@@ -89,7 +89,7 @@ class User(val alpha: Double,
     // (earlier versions used Scala's std JSON generators, but they were slow)
     val showUserDetails = ConfigFromFile.showUserWithState(session.currentState.auth)
     writer.writeStartObject()
-    writer.writeNumberField("ts", session.nextEventTimeStamp.get.toInstant(ZoneOffset.UTC)toEpochMilli())
+    writer.writeNumberField("ts", User.this.session.nextEventTimeStamp.get.toInstant(ZoneOffset.UTC).toEpochMilli)
     writer.writeStringField("userId", if (showUserDetails) userId.toString else "")
     writer.writeNumberField("sessionId", session.sessionId)
     writer.writeStringField("page", session.currentState.page)

@@ -78,6 +78,7 @@ object Main extends App {
     val realTime = toggle("continuous", default = Some(false),
       descrYes = "continuous output", descrNo = "run all at once")
 
+    verify()
   }
 
   val startTime = if (ConfFromOptions.startTimeArg.isSupplied) {
@@ -103,7 +104,7 @@ object Main extends App {
   val seed = if (ConfFromOptions.randomSeed.isSupplied)
     ConfFromOptions.randomSeed.get.get.toLong
    else
-    ConfigFromFile.seed
+    0L
 
 
   val tag = if (ConfFromOptions.tag.isSupplied)

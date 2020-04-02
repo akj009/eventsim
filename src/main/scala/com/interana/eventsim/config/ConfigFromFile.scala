@@ -179,7 +179,7 @@ object ConfigFromFile {
       val transition = t.asInstanceOf[Map[String,Any]]
       val source = readState(transition.getOrElse(SOURCE,List()).asInstanceOf[Map[String,Any]])
       val dest = readState(transition.getOrElse(DEST,List()).asInstanceOf[Map[String,Any]])
-      val p      = transition.getOrElse(P,Unit).asInstanceOf[Double]
+      val p      = transition.getOrElse(P,()).asInstanceOf[Double]
 
       if (!states.contains(source)) {
         states += (source ->
